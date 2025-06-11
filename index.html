@@ -24,6 +24,29 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://zottmann.org/2025/06/11/use-any-openaicompatible-llm-provider.html">Use any OpenAI-compatible LLM provider in Xcode 26, even without Apple Intelligence</a></h1>
+		
+
+		<a href="https://zottmann.org/2025/06/11/use-any-openaicompatible-llm-provider.html" class="u-url"><time class="dt-published" datetime="2025-06-11 12:16:20 &#43;0200">Jun 11, 2025</time></a>
+
+		<div class="e-content">
+			 <p>macOS 26β is out, and so is Xcode 26β with LLM support. Unfortunately, I couldn&rsquo;t get any of it to run as the beta refuses to allow me to use Apple Intelligence – I&rsquo;m in the EU, maybe that&rsquo;s the problem? But not being able to set up Apple Intelligence also meant not being able to use the ChatGPT models in Xcode 26β.</p>
+<p>Well, along comes <a href="https://simonbs.dev/posts/using-claude-with-coding-assistant-in-xcode-26/">Simon Støvring with a helpful blog post</a>, showing that you can make the app use your Anthropic models! Thanks, mate 🤙🏼</p>
+<p>Naturally, I tried to get both OpenAI and OpenRouter working with my own keys, and after inspecting the network traffic and fiddling with the parameters I managed to get it partially working.</p>
+<!-- raw HTML omitted -->
+<h3 id="my-findings-lest-i-forget">My findings, lest I forget</h3>
+<p>The &ldquo;URL&rdquo; parameter is the API&rsquo;s base URL (must be OpenAI-compatible) up to (but not including) the <code>/v1</code>, e.g. <code>https://api.openai.com/</code> instead of <code>https://api.openai.com/v1</code>.</p>
+<p>The &ldquo;API Key&rdquo; parameter is the API key your provider gave you, e.g. <code>sk-whatever</code>; the &ldquo;API Key Header&rdquo; parameter is <code>x-api-key</code>. But:</p>
+<p>The &ldquo;API Key Header&rdquo; can be set to <code>Authorization</code> – in that case, Xcode will <strong>automatically</strong> prefix the API key with the string &ldquo;Bearer&rdquo;, e.g. <code>Bearer sk-whatever</code>.</p>
+<!-- raw HTML omitted -->
+<p>So I got OpenAI support working even without Apple Intelligence configured. OpenRouter, not so much: my guess is that OpenRouter&rsquo;s list of available models is just too damn big for Xcode at this point. TBF, it&rsquo;s a humongous list.</p>
+<p>Thanks again to Simon for the pointer!</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://zottmann.org/2025/04/17/sarcasm-is-poison.html">Sarcasm is poison</a></h1>
 		
 
@@ -962,7 +985,7 @@
 <p>Thanks to <a href="https://caniuse.com/css-has">the new <code>:has()</code> selector</a> (Chrome 105 and up) <strong>it&rsquo;s now trivially easy to filter Youtube lists/grids for videos based on their title.</strong></p>
 <p>Take this new-found possibility and combine it with the power of <a href="https://ublockorigin.com/">uBlock Origin</a> and you&rsquo;ll never have to see a reaction video again.</p>
 <p>This screenshot shows filters for &ldquo;reacts&rdquo; &amp; &ldquo;reactions&rdquo;:</p>
-<p><img src="https://zottmann.org/uploads/2022/417f78feb8.png" alt="Screenshot shows uBlock Origin&rsquo;s &ldquo;My filters&rdquo; page with added filters for &ldquo;reacts&rdquo; & &ldquo;reactions&rdquo;"></p>
+<p><img src="https://eu.uploads.micro.blog/24102/2022/417f78feb8.png" alt="Screenshot shows uBlock Origin&rsquo;s &ldquo;My filters&rdquo; page with added filters for &ldquo;reacts&rdquo; & &ldquo;reactions&rdquo;"></p>
 <p>Here&rsquo;s the example filters for copying into your uBO config:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># YT grid view
 www.youtube.com##ytd-rich-item-renderer:has(yt-formatted-string[aria-label*=&#34; REACTION &#34; i])
@@ -1087,7 +1110,7 @@ www.youtube.com##ytd-compact-video-renderer:has(span[aria-label*=&#34; REACTS &#
 <p>Wie erwähnt: &ldquo;nur ein grober bis gar keinen Plan&rdquo;.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p><img src="https://zottmann.org/uploads/2022/36bd3844d8.gif" alt="GIF, Steve Carrell in &ldquo;The Office&rdquo;, er sagt &ldquo;okay&rdquo; und hat Tränen in den Augen">&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><img src="https://eu.uploads.micro.blog/24102/2022/36bd3844d8.gif" alt="GIF, Steve Carrell in &ldquo;The Office&rdquo;, er sagt &ldquo;okay&rdquo; und hat Tränen in den Augen">&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -1193,7 +1216,7 @@ www.youtube.com##ytd-compact-video-renderer:has(span[aria-label*=&#34; REACTS &#
 
 		<div class="e-content">
 			 <p>(This is just a quick write-up since the question/ topic came up on the Deno Fresh discussion board (<a href="https://github.com/denoland/fresh/discussions/230">&ldquo;State sharing between islands&rdquo;</a>) to which I wrote a short reply. I felt like elaborating here. The examples are stripped to bare minimum, so there&rsquo;ll be no TS definitions and no import maps.)</p>
-<p><img src="https://zottmann.org/uploads/2022/ec82456afa.jpg" alt="Screenshot of the first piece of code from the text"></p>
+<p><img src="https://eu.uploads.micro.blog/24102/2022/ec82456afa.jpg" alt="Screenshot of the first piece of code from the text"></p>
 <p>Let&rsquo;s say you&rsquo;ve built a new site using the wonderful <a href="https://fresh.deno.dev/">Deno Fresh</a> web framework.  You have a number of unconnected islands all over the place and now want them to interact with eachother without resorting to hacks like passing data around using some key on the <code>window</code> object.  <strong>In my personal experience</strong> the best way to do that is by using some sort of state management — using a <em>reactive</em> store of arbitrary data.</p>
 <p>There are a number of options here (Zustand, Redux, mobx etc. come to mind) but my preferred go-to is <a href="https://github.com/hmans/statery">Statery</a> by my guy <a href="https://twitter.com/hmans">@hmans</a>.</p>
 <p>Statery bills itself as &ldquo;Surprise-Free State Management&rdquo; and it&rsquo;s 100% true. It does offer a store, the bare minimum of necessities to make that store and its state reactive, and then sends you on your merry way.  Personally, I prefer that approach over the usual <em>&ldquo;does everything (and your mom)&quot;</em> — do one thing, and do it right.  Statery nails that part.</p>
@@ -1285,7 +1308,7 @@ www.youtube.com##ytd-compact-video-renderer:has(span[aria-label*=&#34; REACTS &#
 <p>Software-Entwickler fahren i.d.R. sehr auf neue, interessante, shiny Dinge ab.  Wir lieben dieses High, wenn wir eine neue Sprache/ Bibliothek/ Methodik entdecken, verstehen und erfolgreich einsetzen können.  Nur folgt auf dieses High dann oft der Alltag … ohne Highs.  Also suchen wir nach dem nächsten heissen Ding.  Gerade in der JS-Ecke ist dieses Problem recht verbreitet, was teilweise absurde Auswirkungen auf die Arbeitsmittel (das Tooling) nach sich zieht.  Auf der anderen Seite gibt es ein paar wirklich fantastische Entwicklungen im Web und im JS-Ökosystem, die aus dieser grundsätzlichen Neugier und Begeisterungsfähigkeit geboren wurden.  Nun ja: &ldquo;🍅, 🍅&rdquo;.</p>
 <p>Ergo: wenn man eine Weile nicht in diesem Bereich gearbeitet hat (sagen wir: 6-7 Jahre), ist der Wiedereinstieg möglicherweise etwas … überwältigend.  Aber ich wurschtele mich durch, und verfolge weiter die Idee der Anleitung zum Stromsparen, <a href="https://zottmann.org/2022/07/10/fresh-in-flensburg.html">die ich vor einigen Wochen hatte</a>.</p>
 <p><strong>Ich habe dafür eine kleine Site gebaut: <a href="https://stromsparen.foerde.win/">Stromkosten Sparen</a>.</strong><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Dort kann man den aktuellen, eigenen kWh-Preis angeben, und die Geräte im Haushalt auflisten.  Die Site errechnet die jährlichen Kosten.  Das funktioniert schon sehr gut, <a href="https://stromsparen.foerde.win/">check it out</a>!</p>
-<p><a href="https://stromsparen.foerde.win/"><img src="https://zottmann.org/uploads/2022/a59f72464f.png" alt="Screenshot &ldquo;Stromkosten Sparen&rdquo;"></a></p>
+<p><a href="https://stromsparen.foerde.win/"><img src="https://eu.uploads.micro.blog/24102/2022/a59f72464f.png" alt="Screenshot &ldquo;Stromkosten Sparen&rdquo;"></a></p>
 <p>Dazu werden in den nächsten Tagen noch weitere Sektionen kommen, u.A. Auswertungen und Tipps:</p>
 <ul>
 <li>Was bedeutet die aktuelle Energie-Preis-Entwicklung für mich und meine Geräte über die nächsten Jahre?</li>
@@ -1321,7 +1344,7 @@ www.youtube.com##ytd-compact-video-renderer:has(span[aria-label*=&#34; REACTS &#
 
 		<div class="e-content">
 			 <p>I&rsquo;m slowly getting into <a href="https://preactjs.com">Preact</a>, <a href="https://deno.land/">Deno</a> + <a href="https://fresh.deno.dev/">Deno Fresh</a> and <a href="https://www.typescriptlang.org/">Typescript</a>.  So far, Deno Fresh has been enjoyable.  Naturally, just like Deno it allows for <code>import</code>ing ES modules via HTTPS.  At some point today I wanted to use an NPM package, one which uses React internally, and I had to figure out how to tell that dependency to not use React but Preact instead.</p>
-<p><img src="https://zottmann.org/uploads/2022/dc026c7c24.jpg" alt="Screenshot of the third code block from the post"></p>
+<p><img src="https://eu.uploads.micro.blog/24102/2022/dc026c7c24.jpg" alt="Screenshot of the third code block from the post"></p>
 <p><strong>So, to recap:</strong> load an React-related ES module from a CDN but have it use Preact as dependency instead.</p>
 <p>Preact comes with its own compatibility layer, <a href="https://preactjs.com/guide/v10/switching-to-preact/"><code>preact/compat</code></a>:</p>
 <blockquote>
@@ -6248,7 +6271,7 @@ Seit 30 Jahren erforscht John Martinis Konzepte für Quantencomputer. Jetzt baut
 <p>So I went shopping around and in the end settled on a really nice, very affordable Hirsch<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> &ldquo;Forest&rdquo; leather band.  I paid ~€27 for the medium-sized variant in light/golden brown.  I spend about half and hour in the store, checking out different armbands, and while I don&rsquo;t like all of them (different looks, different tastes) they&rsquo;re all really nice quality!</p>
 <p>It doesn&rsquo;t have the quick release spring bars, tho — which works for me because I don&rsquo;t plan on going swimming anytime soon, and there have been no issues during/after my usual Fitstar training sessions.</p>
 <p>I&rsquo;m pretty happy with the end result.</p>
-<p><img src="https://zottmann.org/uploads/2020/b475d278db.jpg" alt="Withings Activité Pop w/ custom Hirsch &ldquo;Forest&rdquo; light brown leather armband"></p>
+<p><img src="https://eu.uploads.micro.blog/24102/2020/b475d278db.jpg" alt="Withings Activité Pop w/ custom Hirsch &ldquo;Forest&rdquo; light brown leather armband"></p>
 <p><a href="https://goo.gl/photos/iqtuMe15rq1wTtZ18">Full album</a> over @ Google Photos.</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
@@ -7424,13 +7447,13 @@ der Menschen investieren kann.</p>
 <p>The note is stored locally first, and then synchronized to the remote Evernote server.</p>
 <h2 id="what-to-expect-from-it">What to expect from it</h2>
 <p>This is what a bookmark made with the Evernote Web Clipper looks like in Evernote (<a href="https://attic.czm.io/blog-assets/2015-05-screenshot-bookmark-web-clipper.jpg">bigger version</a>).  The image is the first image the Clipper found on the page (I&rsquo;m just guessing here):</p>
-<p><img src="https://zottmann.org/uploads/2020/7b1b1aa335.jpg" alt="Screenshot of a bookmark made using the Evernote Web Clipper" title="Screenshot of a bookmark made using the Evernote Web Clipper"></p>
+<p><img src="https://eu.uploads.micro.blog/24102/2020/7b1b1aa335.jpg" alt="Screenshot of a bookmark made using the Evernote Web Clipper" title="Screenshot of a bookmark made using the Evernote Web Clipper"></p>
 <p>This is what a bookmark made with the macro looks like in Evernote (<a href="https://attic.czm.io/blog-assets/2015-05-screenshot-bookmark-km-macro.jpg">bigger version</a>).  The looks can be customized by reworking the HTML string in the AppleScript block:</p>
-<p><img src="https://zottmann.org/uploads/2020/8399f103ef.jpg" alt="Screenshot of a bookmark made using the KM macro" title="Screenshot of a bookmark made using the KM macro"></p>
+<p><img src="https://eu.uploads.micro.blog/24102/2020/8399f103ef.jpg" alt="Screenshot of a bookmark made using the KM macro" title="Screenshot of a bookmark made using the KM macro"></p>
 <h2 id="the-macro">The macro</h2>
 <p>Download the macro: <a href="https://attic.czm.io/blog-assets/2015-05-km-bookmark-to-evernote.kmmacros">km-bookmark-to-evernote.kmmacros</a>.</p>
 <p>Screenshot (<a href="https://attic.czm.io/blog-assets/2015-05-screenshot-km-bookmark-to-evernote.png">bigger version</a>):</p>
-<p><img src="https://zottmann.org/uploads/2020/6bdbdc3543.jpg" alt="Screenshot of the macro" title="Screenshot of the macro"></p>
+<p><img src="https://eu.uploads.micro.blog/24102/2020/6bdbdc3543.jpg" alt="Screenshot of the macro" title="Screenshot of the macro"></p>
 
 		</div>
 	  </div>
@@ -10218,7 +10241,7 @@ Einsparmöglichkeiten.</p>
 			 <p><strong>Building a fire-and-forget ad blocker using OpenDNS.</strong></p>
 <p>I am an avid Xbox Live user.  More to the point, I&rsquo;m an avid Xbox Live Gold account owner for a number of years by now.</p>
 <p>So, I&rsquo;ve paid for the console, I&rsquo;m paying for all my games, and I pay an ongoing monthly fee for the connectivity, experience, whatever you want to call it.  Still, Microsoft —proprietor of this fine service— thinks it&rsquo;s entirely sensible to put ads in the frontend, or show Kinect ads before videos.</p>
-<p><img src="https://zottmann.org/uploads/2020/319de036cc.jpg" alt="Screenshot dashboard ads"></p>
+<p><img src="https://eu.uploads.micro.blog/24102/2020/319de036cc.jpg" alt="Screenshot dashboard ads"></p>
 <p>I disagree.</p>
 <p><!-- raw HTML omitted -->So I&rsquo;m using <a href="http://opendns.com">OpenDNS</a> to block their ad servers on my Xbox for good.<!-- raw HTML omitted -->  Here&rsquo;s how.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>First up: I&rsquo;m using a router, and both my Xbox and my main computer are getting their internets from it.  Since both of them go through the same router, they share the same external IP address.  If your setup is the same, this is what to do.</p>
@@ -10243,7 +10266,7 @@ Einsparmöglichkeiten.</p>
 <ol>
 <li>On your Xbox, go to the Settings page/panel → System → Configure Network.</li>
 <li>Select your active network connection and go to the DNS settings.<br>
-<img src="https://zottmann.org/uploads/2020/950befc6b5.jpg" alt="Screenshot Network Configuration"></li>
+<img src="https://eu.uploads.micro.blog/24102/2020/950befc6b5.jpg" alt="Screenshot Network Configuration"></li>
 <li>Set the DNS setting to &ldquo;manual&rdquo;, then the primary DNS server to <code>208.67.222.222</code> and the secondary DNS server to <code>208.67.220.220</code>.</li>
 <li>On saving these settings, your Live account will be logged out.  Just log in again.</li>
 </ol>
@@ -10272,7 +10295,7 @@ Einsparmöglichkeiten.</p>
 		<div class="e-content">
 			 <p><strong>It&rsquo;s the godsdamn console wars all over again, I swear.</strong></p>
 <p>So today Apple might/will/should announce the iPhone 5.  Which, of course, means there&rsquo;ll be a <em>hilarious avalanche</em> of delightful &ldquo;art&rdquo; by curiously insecure<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> Android users, just like <a href="https://plus.google.com/110255737428907780217/posts">this one</a>:</p>
-<p><img src="https://zottmann.org/uploads/2020/45daec05f1.jpg" alt="Sheep running towards a badly photoshopped Apple Store" title="Sheep running towards a badly photoshopped Apple Store"></p>
+<p><img src="https://eu.uploads.micro.blog/24102/2020/45daec05f1.jpg" alt="Sheep running towards a badly photoshopped Apple Store" title="Sheep running towards a badly photoshopped Apple Store"></p>
 <p>Haha, it&rsquo;s funny because it&rsquo;s <em>utter bullshit</em>.</p>
 <p>I guess Apple users are from Mars, Android users are from Venus!!!1  Or something.  Bloody hell, I&rsquo;m already sick and tired of the predictable Apple user bashing.</p>
 <p>It&rsquo;s not just that many conscious Android users I&rsquo;ve met don&rsquo;t understand what I like about iOS, it&rsquo;s that they <em>don&rsquo;t want</em> to hear why.  Not all of them, mind.  Just …many.  You prefer Android?  Great, your choice, have fun.  Me, I like iOS better.  That doesn&rsquo;t make me retarded or a sheep or a mindless drone.</p>
@@ -12852,7 +12875,7 @@ to <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, and full
 
 		<div class="e-content">
 			 <p>In his thoroughly enjoyable <a href="http://www.goodreads.com/review/list/1233416?shelf=series--science-in-the-capitol"><em>Science In The Capitol</em> trilogy</a>, <a href="http://www.goodreads.com/author/show/1858.Kim_Stanley_Robinson">Kim Stanley Robinson</a> (who happens to be my favourite author) talks about a concept called &ldquo;The Paleolithic Life&rdquo;; something he also spoke about in a <a href="http://www.youtube.com/watch?v=R-jz86gMiHw">Google Tech Talk on Climate Change</a> (at ~50min in).</p>
-<p><a href="http://flickr.com/photos/51035555243@N01/287666827" title="A Brand New Day"><img src="https://zottmann.org/uploads/2020/8a09065919.jpg" alt=""></a></p>
+<p><a href="http://flickr.com/photos/51035555243@N01/287666827" title="A Brand New Day"><img src="https://eu.uploads.micro.blog/24102/2020/8a09065919.jpg" alt=""></a></p>
 <p>The idea is that there are certain activities engraved in the mind of every human, which result in joy and happiness. These are the things the <a href="http://en.wikipedia.org/wiki/Paleolithic">paleolithic</a> man did during his waking hours, things nature rewarded him for by making him feel alive and capable and <em>good</em>, thus helping him evolve and aiding his development.</p>
 <p>Mr. Robinson compiled a list of these activities:</p>
 <ul>
@@ -12984,7 +13007,7 @@ Germany, this module is able to extract the gist of any given Techcrunch or Vall
 (and end) point. Well, I consider it warming up. I’ve added the distance to my usual 5km, and thus I am now at 7km per run.</p>
 <p>A few weeks ago I’ve bought some <a href="http://www.amazon.de/Hand-Irons/dp/B000KP1QDK/">light weights for my hands</a>. They’re
 ~450g (1lb) each. Doesn’t sound much, but it’s noticable—now my upper body gets some minor workout as well.</p>
-<p><a href="http://flickr.com/photos/30047882@N00/1231478137" title="WWF Logo"><img src="https://zottmann.org/uploads/2020/25478c9c51.jpg" alt=""></a>I’ve registered myself for the <a href="http://nikeplus.nike.com/nikeplus/humanrace/">Nike+ 10km Human Race</a> going down end of August. Going to run for the <a href="http://www.worldwildlife.org/">World Wildlife Fund</a>. There’s an official event here in Munich, actually! Unfortunately the whole 10km are over pavement, and I don’t want to risk injury again, so I’ll have to run a different route, I think.</p>
+<p><a href="http://flickr.com/photos/30047882@N00/1231478137" title="WWF Logo"><img src="https://eu.uploads.micro.blog/24102/2020/25478c9c51.jpg" alt=""></a>I’ve registered myself for the <a href="http://nikeplus.nike.com/nikeplus/humanrace/">Nike+ 10km Human Race</a> going down end of August. Going to run for the <a href="http://www.worldwildlife.org/">World Wildlife Fund</a>. There’s an official event here in Munich, actually! Unfortunately the whole 10km are over pavement, and I don’t want to risk injury again, so I’ll have to run a different route, I think.</p>
 <p>Overall I am well on track towards my “250km in 2008” goal. I believe with my next run I’ll be hitting the 100 miles mark. We’ll see what the <a href="http://nikeplus.nike.com/">Nike+
 site</a> is going to tell me. Which is still kind of crappy, by the way. They rather add new and useless features than fixing longstanding issues like the broken OSX widgets.</p>
 <p>I’ve discovered <a href="http://www.runnerplus.com/">Runner+</a>, a site which aims to be Nike+ without the cruft,
@@ -13032,7 +13055,7 @@ Widget Engine</a>) or manual upload of the XML files or an automated daily sync 
 		<a href="https://zottmann.org/2008/06/02/020000.html" class="u-url"><time class="dt-published" datetime="2008-06-02 02:00:00 &#43;0200">Jun 2, 2008</time></a>
 
 		<div class="e-content">
-			 <p>[<img src="https://zottmann.org/uploads/2020/4128dcd87a.jpg" alt="">][2]A week ago, during the day, my left lower back and leg started to hurt. Each step I made stung, and it didn’t get better. I couldn’t think of anything I had done; I didn’t fall, trip or twist my leg. I had just run in the morning.</p>
+			 <p>[<img src="https://eu.uploads.micro.blog/24102/2020/4128dcd87a.jpg" alt="">][2]A week ago, during the day, my left lower back and leg started to hurt. Each step I made stung, and it didn’t get better. I couldn’t think of anything I had done; I didn’t fall, trip or twist my leg. I had just run in the morning.</p>
 <p>On Thursday the pain was still there, so I’ve consulted a doctor. She told me to stop running on asphalt the pavement, because no matter how good the shoes,
 the ground in itself is too hard, too solid, too inflexible. So what I’ve done, in effect, was messing with my joints and cramping up my muscles. I was given a shot and the task to find a better route for running, preferrably something like forest roads.</p>
 <p>Splendid.</p>
@@ -13758,7 +13781,7 @@ Also, I wrote the first rough draft in Python, then switched to Ruby. There I’
 		<a href="https://zottmann.org/2007/12/24/christmas-cheers.html" class="u-url"><time class="dt-published" datetime="2007-12-24 02:00:00 &#43;0200">Dec 24, 2007</time></a>
 
 		<div class="e-content">
-			 <p><a href="http://www.flickr.com/photos/czottmann/2133146152/" title="Christmas Cheers by Carlo Z, on Flickr"><img src="https://zottmann.org/uploads/2020/18cd368aea.jpg" alt="Christmas Cheers"></a></p>
+			 <p><a href="http://www.flickr.com/photos/czottmann/2133146152/" title="Christmas Cheers by Carlo Z, on Flickr"><img src="https://eu.uploads.micro.blog/24102/2020/18cd368aea.jpg" alt="Christmas Cheers"></a></p>
 <p>Calm down. Christmas isn’t about freaking out and panicking, it’s about not giving a damn about anything other than having a good time.</p>
 <p>If you’re stressing yourself out, you’re doing it wrong.</p>
 
