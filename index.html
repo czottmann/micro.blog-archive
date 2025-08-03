@@ -30,11 +30,12 @@
 		<a href="https://zottmann.org/2025/06/13/how-to-use-google-gemini.html" class="u-url"><time class="dt-published" datetime="2025-06-13 11:27:02 &#43;0200">Jun 13, 2025</time></a>
 
 		<div class="e-content">
-			 <p>Someone asked on Mastodon<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> whether it&rsquo;s possible to use Google&rsquo;s Gemini in the new Xcode 26β on macOS 26 beta. It is!</p>
+			 <p>Over on Mastodon, someone<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> asked whether it&rsquo;s possible to use Google&rsquo;s Gemini in the new Xcode 26β on macOS 26 beta. It is!</p>
 <!-- raw HTML omitted -->
 <p>Well, with some creative proxy scripting, that is.</p>
 <p>Google <a href="https://ai.google.dev/gemini-api/docs/openai#rest">offers an OpenAI-compatible API for Gemini</a>, and while working, it is not what Xcode expects in terms of URL layout. In Xcode&rsquo;s LLM provider config, the custom &ldquo;URL&rdquo; parameter is the API&rsquo;s base URL up to <strong>but not including</strong> the <code>v1/</code> path segment, e.g. <code>https://api.openai.com/</code> instead of the full <code>https://api.openai.com/v1/</code>. When making calls to the provider later on, Xcode will automatically append the endpoint path (e.g. <code>v1/models</code> etc.) to that URL.</p>
 <p>Now, the Gemini URL structure breaks with the <code>v1/</code> convention: its URL is <code>https://generativelanguage.googleapis.com/v1beta/openai/</code> instead of <code>https://generativelanguage.googleapis.com/v1/</code>. You can see why this might be a problem.</p>
+<p>So here&rsquo;s how to set up both Xcode and a proxy app to use Google&rsquo;s offerings.</p>
 <h2 id="step-1-setting-up-gemini-in-xcode">Step 1: Setting up Gemini in Xcode</h2>
 <p>Go to Settings → Intelligence → Add a Model Provider, then fill out the form as follows:</p>
 <ul>
@@ -680,13 +681,13 @@
 
 		<div class="e-content">
 			 <p>This day in 2021 was the first day of my 3-month burnout sabbatical.</p>
-<p>I had been increasingly overworked for 2-3 years at this point, we were building a sensible and sustainable company, I was way too stressed all the time, and was struggling <em>so. fukken. hard.</em> Still, I kept pushing through, but I felt like I was a week away from going Hindenburg 1937. Then, that Friday evening, my good friend and co-founder Florian showed up unannounced at our doorstep, and told me, <em>&ldquo;Buddy, you&rsquo;re toast. Take a few months off, just get better.”</em> My crew had noticed, he had noticed, and they acted.</p>
+<p>I had been increasingly overworked for 2-3 years at this point. We were building a sensible and sustainable company, yes, and I was so proud about that. At the same time, I was way too stressed all the time, and was struggling <em>so. fucking. hard.</em> Still, I kept pushing through, day by day, but very often I felt like I was a week away from going Hindenburg 1937. Then, that Friday evening, my good friend and co-founder Florian showed up unannounced at our doorstep, and told me, <em>&ldquo;Buddy, you&rsquo;re pooped. Take a few months off, just get better.”</em> My crew had noticed, he had noticed, and they acted.</p>
 <p>I&rsquo;m still very grateful to them.</p>
 <p>And the first weeks were brutal. I had such a hard time deciding <em>anything</em>. Answering a simple question like &ldquo;Want some coffee?” was hard. My wife carried my sorry ass for weeks. I had completely drained my batteries which (among other things) were also powering my decision-making processes, which was weird AF.</p>
-<p>I remember going for a walk in Munich, and there was a fork in a road — both paths would take me to the same destination. Still, I stood there dumbfounded for a few minutes.</p>
-<p>Anyways. I was <em>able</em> to take my time, I got better, I found out why I was stressed, and ultimately, I came to the conclusion that I had to leave the company I had helped found and loved dearly. I wasn&rsquo;t the right person for that particular job anymore, and the company wasn&rsquo;t the right fit for me anymore. Which was a sad yet elating conclusion, like growing up or something.</p>
-<p>2023: We&rsquo;ve changed many more things, moved way up North, I&rsquo;m an indie dev now, and my wife says I look much better these days. ❤️</p>
-<p>Life is pretty good right now is what I&rsquo;m saying. Getting stuck can get you killed, and you&rsquo;re never to old to make some changes.</p>
+<p>I remember going for a walk in Munich, and there was a fork in a road — both paths would take me to the same destination. Still, I was unable to choose one of them, and just stood there dumbfounded for a few minutes. Not a pleasant experience.</p>
+<p>Anyways. I was <em>able</em> to take my time, I got better, I found out why I was stressed, and ultimately, I came to the conclusion that I had to leave the company I had helped found and loved dearly. I wasn&rsquo;t the right person for that particular job anymore – and <em>my own company</em> wasn&rsquo;t the right fit for me anymore. Which was a sad yet elating conclusion. And a very weird moment of recognition: Like moving out of my parents' house AND being the parent at the same time.</p>
+<p>Fast-forward to 2023: We&rsquo;ve changed many more things, moved way up North, I&rsquo;m an indie dev now, and my wife says I look much better these days. ❤️</p>
+<p>Life is pretty good right now is what I&rsquo;m saying. Getting stuck can get you killed, and you&rsquo;re never too old to make some changes.</p>
 <p>It&rsquo;s amazing the dark places you can end up, even when the work is meaningful, the people are great, and there&rsquo;s a real, global purpose. (I had all three of those things: We were building a <a href="https://recup.de">Germany-wide deposit system for reusable coffee cups and take-out containers</a>. Basically a waste reduction system on a gigantic scale. Good, important work on an <em>actual</em> problem.)</p>
 <p>An interesting lesson, that.</p>
 
