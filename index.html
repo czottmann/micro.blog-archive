@@ -24,6 +24,96 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html">Linearis: My Linear CLI Built for Humans (and LLM Agents)</a></h1>
+		
+
+		<a href="https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html" class="u-url"><time class="dt-published" datetime="2025-09-03 11:02:00 &#43;0200">Sep 3, 2025</time></a>
+
+		<div class="e-content">
+			 <p><strong>TL;DR:</strong> I built a <a href="https://github.com/czottmann/linearis">CLI tool for Linear.app with JSON output, smart ID resolution, and optimized GraphQL queries; designed for LLM agents and humans who prefer structured data.</a></p>
+<hr>
+<p>I use <a href="https://linear.app">Linear</a> daily, in all my projects. It just such a nice piece of thoughtful software. It&rsquo;s fast, well-laid out, flexible without being overwhelming, and respectful of my time both as a planner and a dev. And it looks good.</p>
+<p>It&rsquo;s the anti-JIRA.</p>
+<p>The last few months I&rsquo;ve <em>also</em> been using Claude Code, <a href="https://github.com/sst/opencode">sst/opencode</a>, and <a href="https://github.com/charmbracelet/crush">charmbracelet/crush</a> a lot. (Primarily CC.) And naturally, during that time, I wanted to be able to tell the agent to work on this ticket or update that ticket, so I used <a href="https://linear.app/docs/mcp">the official Linear MCP server</a>. It worked great, no complaints.</p>
+<h2 id="the-problems">The Problem(s)</h2>
+<p>Then one day I discovered the <code>/context</code> command in Claude, Code which gives a nice overview of what&rsquo;s currently occupying its memory. Of the available 200k tokens, roughly 13k were taken up by the Linear MCP server alone – just by connecting and providing its tool definitions.</p>
+<p>Now 13k tokens isn&rsquo;t much if you&rsquo;re working with models that have million-token context windows (hello, Gemini Pro). But when you&rsquo;re dealing with 100k or 200k token limits, that&rsquo;s a significant chunk of your available context – gone before you even start doing actual work.</p>
+<p>Thinking about it, I realized that I am only using maybe three or four tools out of the 20+ that the Linear MCP server offers. Why spend tokens on project-management and workspace-setup features when I&rsquo;m never going to use them? On top of that, I can&rsquo;t use that MCP server in shell scripts.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<h2 id="my-solution-linearis">My Solution: Linearis</h2>
+<p>I finally decided to scratch my own itch and build something focused on what I <em>actually</em> do with Linear on the command line and in agent prompts:</p>
+<ul>
+<li>Create and update tickets</li>
+<li>Add comments and labels</li>
+<li>Search and filter issues</li>
+<li>Manage ticket relationships</li>
+</ul>
+<p>What I don&rsquo;t do in these contexts is project management, workspace creation, or administrative setup. That stuff I handle manually in the UI when needed.</p>
+<p>So I wrote <a href="https://github.com/czottmann/linearis">Linearis</a>, a CLI tool for Linear.app with JSON output, smart ID resolution, and optimized GraphQL queries. I designed it for LLM agents and humans who prefer structured data.</p>
+<p>It&rsquo;s a command-line tool that outputs JSON, resolves ticket IDs smartly, and sips keeps token usage light.</p>
+<h3 id="installation">Installation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install -g --install-links czottmann/linearis
+</code></pre></div><p>Once installed, <a href="https://github.com/czottmann/linearis#authentication">authenticate yourself</a>, and then you&rsquo;re good to go.</p>
+<h3 id="usage-examples">Usage Examples</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Show usage</span>
+linearis
+
+<span style="color:#75715e"># Show *everything* the agent needs to know</span>
+linearis usage
+
+<span style="color:#75715e"># Create tickets with full context</span>
+linearis issues create <span style="color:#e6db74">&#34;Fix login timeout&#34;</span> --team Backend <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --assignee user123 --labels <span style="color:#e6db74">&#34;Bug,Critical&#34;</span> --priority <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e"># Create bare-bones sub-issues </span>
+linearis issues create <span style="color:#e6db74">&#34;Fix login timeout&#34;</span> --parent-ticket ABC-234
+
+<span style="color:#75715e"># Smart ID resolution - works with ABC-123 format</span>
+linearis issues read DEV-456
+linearis issues update ABC-123 --state <span style="color:#e6db74">&#34;In Review&#34;</span>
+
+<span style="color:#75715e"># JSON output plays nice with other tools, like jq</span>
+linearis issues list -l <span style="color:#ae81ff">5</span> | jq <span style="color:#e6db74">&#39;.[] | .identifier + &#34;: &#34; + .title&#39;</span>
+
+<span style="color:#75715e"># Add comments to track progress</span>
+linearis comments create ABC-123 --body <span style="color:#e6db74">&#34;Fixed in PR #456&#34;</span>
+</code></pre></div><h2 id="using-linearis-in-a-llm-agent">Using Linearis in a LLM agent</h2>
+<p>It&rsquo;s <strong>agent-friendly by design.</strong> The key idea was making it dead simple for LLM agents to understand and use the tool:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linearis usage
+</code></pre></div><p>This single command returns comprehensive yet concise usage information for all available tools. Agents can pipe this directly into their context and immediately understand everything the tool can do.</p>
+<p>The flags and options are well-documented and consistently structured, so agents can easily call it through their Bash tools without any special integration.</p>
+<p>So I put this in my <code>CLAUDE.md</code>:</p>
+<blockquote>
+<p>We track our tickets and projects in Linear (<a href="https://linear.app">https://linear.app</a>), a project management tool. We use the <code>linearis</code> CLI tool for communicating with Linear. Use your Bash tool to call the <code>linearis</code> executable. Run <code>linearis usage</code> to see usage information.</p>
+<p>The ticket numbers follow the format &ldquo;ZCO-<!-- raw HTML omitted -->&rdquo;. Always reference tickets by their number.</p>
+<p>If you create a ticket, and it&rsquo;s not clear which project to assign it to, prompt the user. When creating sub-issues, use the project of the parent ticket by default.</p>
+<p>When the the status of a task in the ticket description has changed (task → task done), update the description accordingly. When updating a ticket with a progress report that is more than just a checkbox change, add that report as a ticket comment.</p>
+</blockquote>
+<p>That&rsquo;s probably overly verbose, I guess. 😉 Some examples for prompts I use daily:</p>
+<ul>
+<li><em>&ldquo;we&rsquo;re working on ABC-1234 now&rdquo;</em></li>
+<li>later: <em>&ldquo;add a progress report to the ticket&rdquo;</em></li>
+<li><em>&ldquo;mark ABC-2345 as &lsquo;in progress&rsquo;&quot;</em></li>
+<li><em>&ldquo;make this a sub-issue of ABC-3456&rdquo;</em></li>
+<li><em>&ldquo;mark ABC-4567 as a bug&rdquo;</em></li>
+</ul>
+<h2 id="the-result">The Result</h2>
+<p>I&rsquo;ve been using Linearis for a while now, both manually and with my agentic tools. It does exactly what I need it to do without the overhead I don&rsquo;t need. The agents can create tickets, update them, add comments, and manage labels efficiently. And when I need to do project setup or workspace management, I just use Linear&rsquo;s web UI.</p>
+<p>Sometimes the best tool is the one that doesn&rsquo;t try to do everything – just the things you actually need, done well. Linearis solves my particular requirements, but I think it might be helpful to you, too.</p>
+<p><a href="https://github.com/czottmann/linearis">Check it out on GitHub.</a></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>I know I could, technically, but I&rsquo;m not an insane person. 😉&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 
 		<a href="https://zottmann.org/2025/09/01/i-finally-pulled-the-trigger.html" class="u-url"><time class="dt-published" datetime="2025-09-01 16:34:27 &#43;0200">Sep 1, 2025</time></a>
 
@@ -350,12 +440,12 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
 			 <p>macOS 26β is out, and so is Xcode 26β with LLM support. Unfortunately, I couldn&rsquo;t get any of it to run as the beta refuses to allow me to use Apple Intelligence – because apparently <a href="https://github.com/insidegui/VirtualBuddy/discussions/524#discussioncomment-13426024">Apple Intelligence isn&rsquo;t available in virtual machines at all</a>? Wild. But not being able to set up Apple Intelligence means not being able to use the ChatGPT models in Xcode 26β which is one of its main draws for me.</p>
 <p>Well, along comes <a href="https://simonbs.dev/posts/using-claude-with-coding-assistant-in-xcode-26/">Simon Støvring with a helpful blog post</a>, showing that you can make the app use your Anthropic models! Thanks, mate 🤙🏼</p>
 <p>Naturally, I tried to get both OpenAI and OpenRouter working with my own keys, and after inspecting the network traffic and fiddling with the parameters I managed to get it partially working.</p>
-<p>&lt;img style=&ldquo;display:block; margin-left:auto; margin-right:auto;&rdquo; src=&ldquo;<a href="https://zottmann.org/uploads/2025/screenshot-2025-06-11-at-11.55.45.png%22">https://zottmann.org/uploads/2025/screenshot-2025-06-11-at-11.55.45.png&quot;</a> alt=&ldquo;Screenshot of Xcode 26β, Settings window, Intelligence tab, showing a populate &ldquo;OpenAI&rdquo; entry which lists a lot of OpenAI models&rdquo; title=&ldquo;Screenshot 2025-06-11 at 11.55.45.png&rdquo; border=&ldquo;0&rdquo; width=&ldquo;808&rdquo; height=&ldquo;557&rdquo; /&gt;</p>
+<p>&lt;img style=&ldquo;display:block; margin-left:auto; margin-right:auto;&rdquo; src=&ldquo;<a href="https://eu.uploads.micro.blog/24102/2025/screenshot-2025-06-11-at-11.55.45.png%22">https://eu.uploads.micro.blog/24102/2025/screenshot-2025-06-11-at-11.55.45.png&quot;</a> alt=&ldquo;Screenshot of Xcode 26β, Settings window, Intelligence tab, showing a populate &ldquo;OpenAI&rdquo; entry which lists a lot of OpenAI models&rdquo; title=&ldquo;Screenshot 2025-06-11 at 11.55.45.png&rdquo; border=&ldquo;0&rdquo; width=&ldquo;808&rdquo; height=&ldquo;557&rdquo; /&gt;</p>
 <h3 id="my-findings-lest-i-forget">My findings, lest I forget</h3>
 <p>The &ldquo;URL&rdquo; parameter is the API&rsquo;s base URL (must be OpenAI-compatible) up to (but not including) the <code>/v1</code>, e.g. <code>https://api.openai.com/</code> instead of <code>https://api.openai.com/v1</code>.</p>
 <p>The &ldquo;API Key&rdquo; parameter is the API key your provider gave you, e.g. <code>sk-whatever</code>; the &ldquo;API Key Header&rdquo; parameter is <code>x-api-key</code>. But:</p>
 <p>If the provider in question uses the HTTP <code>Authorization</code> header to check the API key, we&rsquo;re in luck: The &ldquo;API Key Header&rdquo; can also be set to <code>Authorization</code> – and in that case, Xcode will <strong>automatically</strong> prefix the API key with the string &ldquo;Bearer&rdquo;, e.g. <code>Bearer sk-whatever</code>.</p>
-<p>&lt;img style=&ldquo;display:block; margin-left:auto; margin-right:auto;&rdquo; src=&ldquo;<a href="https://zottmann.org/uploads/2025/screenshot-2025-06-11-at-11.53.53.png%22">https://zottmann.org/uploads/2025/screenshot-2025-06-11-at-11.53.53.png&quot;</a> alt=&ldquo;Xcode 26β&rsquo;s &ldquo;internet hosted model provider&rdquo; form, with data as described in the text above.&rdquo; title=&ldquo;Screenshot 2025-06-11 at 11.53.53.png&rdquo; border=&ldquo;0&rdquo; width=&ldquo;843&rdquo; height=&ldquo;576&rdquo; /&gt;</p>
+<p>&lt;img style=&ldquo;display:block; margin-left:auto; margin-right:auto;&rdquo; src=&ldquo;<a href="https://eu.uploads.micro.blog/24102/2025/screenshot-2025-06-11-at-11.53.53.png%22">https://eu.uploads.micro.blog/24102/2025/screenshot-2025-06-11-at-11.53.53.png&quot;</a> alt=&ldquo;Xcode 26β&rsquo;s &ldquo;internet hosted model provider&rdquo; form, with data as described in the text above.&rdquo; title=&ldquo;Screenshot 2025-06-11 at 11.53.53.png&rdquo; border=&ldquo;0&rdquo; width=&ldquo;843&rdquo; height=&ldquo;576&rdquo; /&gt;</p>
 <p>So I got OpenAI support working even without Apple Intelligence configured. OpenRouter, not so much: my guess is that OpenRouter&rsquo;s list of available models is just too damn big for Xcode at this point. TBF, it&rsquo;s a humongous list.</p>
 <p>Thanks again to Simon for the pointer!</p>
 <p><strong>Update 2025-08-04:</strong> Got a message from reader Tanveer M. about OpenRouter: there&rsquo;s <a href="https://openrouter.ai/docs/community/xcode">Xcode Integration | OpenRouter | Documentation</a> now. Nice.</p>
