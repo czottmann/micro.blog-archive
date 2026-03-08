@@ -33,7 +33,7 @@
 			 <p>TIL a neat Xcode trick!</p>
 <p>So my apps contain app intents. Those won&rsquo;t show up in Shortcuts unless the app is anywhere in <code>/Applications</code>. For months now I&rsquo;ve been using a post-build scheme script to move the DEBUG build there, w/ a symlink to the app in its original place in derived data.</p>
 <p>This worked well but was a whole thing because I had to make sure cleaning the build would wipe the moved app etc.</p>
-<p>Turns out I overthought it! All I needed to do was to add this in the right <code>.xcconfig</code>:</p>
+<p>Turns out I was overthinking it! All I needed to do was to add this in the right <code>.xcconfig</code>:</p>
 <pre tabindex="0"><code>DEPLOYMENT_LOCATION = YES
 DSTROOT = /Applications/Dev Builds
 INSTALL_PATH = /
