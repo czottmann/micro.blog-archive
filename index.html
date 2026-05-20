@@ -24,6 +24,26 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://zottmann.org/2026/05/20/the-european-llm-routers-are.html">The European LLM Routers Are Here</a></h1>
+		
+
+		<a href="https://zottmann.org/2026/05/20/the-european-llm-routers-are.html" class="u-url"><time class="dt-published" datetime="2026-05-20 16:36:39 &#43;0200">May 20, 2026</time></a>
+
+		<div class="e-content">
+			 <p>If you&rsquo;re EU based and need a GDPR compliant LLM router for legal (or ethical) reasons, don&rsquo;t sleep on <a href="https://cortecs.ai/">Cortecs</a>.</p>
+<p><em>(What is an LLM router? It&rsquo;s a software layer positioned between an application and multiple large language model (LLM) providers that directs incoming prompts to the most suitable model for a specific task. So you get one API URL and specify the model in your calls, whether that model is from Google, DeepSeek, or Mistral. Behind the scenes, the LLM router connects your request with a suitable provider.)</em></p>
+<p>Don&rsquo;t get me wrong, I really like the OG <a href="https://openrouter.ai/">OpenRouter</a> — IMHO it&rsquo;s still without equal when it comes to both the number of supported providers and configurability. But as a European business that wants to reduce US-based risks in its supply chain, it might not be a good-enough option: even if you use an EU-based inference provider through OpenRouter, OR itself remains a venture in US jurisdiction.</p>
+<p>Based in Vienna (Austria), Cortecs offers <a href="https://cortecs.ai/serverlessModels">a good (small) selection of models</a>, zero data retention (ZDR), and &ldquo;sovereign cloud&rdquo; toggles. It&rsquo;s clearly early days, but good stuff already.</p>
+<p>My current go-to example: I like DeepSeek V4 Flash, a very fine offering from the eponymous Chinese lab. With Cortecs, I can do that: with ZDR, fully EU-based, in a 100% GDPR compliant way. One of their supported providers is <a href="https://tensorix.ai/">Tensorix</a> from Ireland, and they offer that model. These days, <a href="https://cortecs.ai/detailedServerlessView/deepseek-v4-flash">I get 350 tps throughput with ~1.5s latency</a>, which isn&rsquo;t bad at all.</p>
+<p>BTW, a very nice side effect of using LLM routers: I only have to deal with one party and only get one invoice, even if I use all of their supported providers. But that doesn&rsquo;t mean lock-in! Cortecs' API is OpenAI-compatible, so if I become unhappy with them at some point, I can just up and leave. Because that API is basically a standard by now, changing providers usually just means changing the base URL and model ID in my tool&rsquo;s config.</p>
+<p>And since I use <a href="https://pi.dev/">pi</a> quite a lot, I released <a href="https://github.com/czottmann/pi-cortecs">npm:pi-cortecs</a> a few days ago. Nothing special — it just adds Cortecs provider support for <code>/login</code>, a new <code>/cortecs-models</code> command, and auto-fetching of their available models. Useful! Here&rsquo;s the <a href="https://npmx.dev/package/pi-cortecs">npm package</a>.</p>
+<p>#DataSovereignty #EU #LLM</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://zottmann.org/2026/04/29/nuance-in-the-current-ai.html">Nuance in the current AI Yay/Nay &#34;debate&#34;</a></h1>
 		
 
@@ -31,11 +51,11 @@
 
 		<div class="e-content">
 			 <p>I gotta say, as a place for getting undifferentiated and breathless <em>&ldquo;ALL AI BAD&rdquo;</em> takes, Mastodon as a whole remains peerless. Bluesky is a close second.</p>
-<p>It&rsquo;s fucking exhausting, because Nuance is dead.</p>
-<p>On the one side, there are the hyperactive <em>&ldquo;AI RULES EVERYTHING AROUND ME&rdquo;</em> motherfuckers who want to disrupt/steamroll all the things, and who for some inane reason assume they&rsquo;re immune to the ongoing and coming shifts in both society and markets. (They&rsquo;re very likely wrong.) You know the type. The dudes<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> who still think that tech will solve every problem, contrary to empiric evidence within the last 50-500 years.</p>
+<p>It&rsquo;s fucking exhausting, because any semblance of nuance is gone.</p>
+<p>On one side, there are the hyperactive <em>&ldquo;AI RULES EVERYTHING AROUND ME&rdquo;</em> motherfuckers who want to disrupt/steamroll all the things, and who, for some reason that escapes me, assume they&rsquo;re immune to the ongoing and coming shifts in both society and markets. (They&rsquo;re very likely wrong.) You know the type: the dudes<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> who still think that tech will solve every problem, contrary to empirical evidence from the last 50-500 years.</p>
 <p>TBF, I guess I was one of them, 20-30 years ago, but I&rsquo;ve evolved as a person.</p>
-<p>On the other side, there&rsquo;s the <em>&ldquo;never AI&rdquo;</em> &amp; <em>&ldquo;all AI is fascist&rdquo;</em><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> crowd whose majority flat out refuses to entertain the notion that the tech in question might be excessively useful to others, and <strong>is indeed already</strong> enabling many people all over the globe to further participate in life. I&rsquo;m not talking just about devs like me, but about people like my own mother (who suffers from clinically deteriorating eye sight), and less fluent folks who have to deal with fields they&rsquo;re not trained for, like, say, any type of bureaucracy. As an example, having tech translate German gov&rsquo;t documents to your own native tongue, in the blink of an eye and for free, that&rsquo;s helpful. Having an infinitely patient <em>something</em> to help you understand what&rsquo;s asked of you in those documents, that&rsquo;s a goddamn game changer.</p>
-<p>I know AI is neither a panacea to all our ills nor without flaws (and often questionable training) — but at the same time I see it being very useful.</p>
+<p>On the other side, there&rsquo;s the <em>&ldquo;never AI&rdquo;</em> &amp; <em>&ldquo;all AI is fascist&rdquo;</em><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> crowd, whose majority flat-out refuses to entertain the notion that the tech in question might be excessively useful to others and <strong>is already</strong> enabling many people all over the globe to participate more fully in life. I&rsquo;m not talking just about devs like me but about people like my own mother (who suffers from clinically deteriorating eyesight) and less fluent folks who have to deal with fields they&rsquo;re not trained for, like, say, any type of bureaucracy. For example, having tech translate German gov&rsquo;t documents into your native tongue in the blink of an eye and for free, that&rsquo;s helpful. Having an infinitely patient <em>something</em> help you understand what&rsquo;s asked of you in those documents, now that&rsquo;s a goddamn game changer.</p>
+<p>I know AI is neither a panacea for all our ills nor without flaws (and often questionable training), but at the same time I see it as very useful. Both those things can be true at the same time. You know, because <em>nuance.</em></p>
 <p>But the FUD and vitriol from <strong>both</strong> sides is exhausting AF, and not helpful in any way.</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
@@ -44,7 +64,7 @@
 <p>And it&rsquo;s usually dudes, let&rsquo;s be honest here.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>It&rsquo;s not, and just because you don&rsquo;t know any words doesn&rsquo;t mean the one argumentative sledge hammer you <em>do</em> know fits every nail.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>It&rsquo;s not, and just because you don&rsquo;t know any words doesn&rsquo;t mean the one argumentative sledgehammer you <em>do</em> know fits every nail.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -2672,12 +2692,12 @@ linearis comments create ABC-123 --body <span style="color:#e6db74">&#34;Fixed i
 			 <p>macOS 26β is out, and so is Xcode 26β with LLM support. Unfortunately, I couldn&rsquo;t get any of it to run as the beta refuses to allow me to use Apple Intelligence – because apparently <a href="https://github.com/insidegui/VirtualBuddy/discussions/524#discussioncomment-13426024">Apple Intelligence isn&rsquo;t available in virtual machines at all</a>? Wild. But not being able to set up Apple Intelligence means not being able to use the ChatGPT models in Xcode 26β which is one of its main draws for me.</p>
 <p>Well, along comes <a href="https://simonbs.dev/posts/using-claude-with-coding-assistant-in-xcode-26/">Simon Støvring with a helpful blog post</a>, showing that you can make the app use your Anthropic models! Thanks, mate 🤙🏼</p>
 <p>Naturally, I tried to get both OpenAI and OpenRouter working with my own keys, and after inspecting the network traffic and fiddling with the parameters I managed to get it partially working.</p>
-<p>&lt;img style=&ldquo;display:block; margin-left:auto; margin-right:auto;&rdquo; src=&ldquo;<a href="https://eu.uploads.micro.blog/24102/2025/screenshot-2025-06-11-at-11.55.45.png%22">https://eu.uploads.micro.blog/24102/2025/screenshot-2025-06-11-at-11.55.45.png&quot;</a> alt=&ldquo;Screenshot of Xcode 26β, Settings window, Intelligence tab, showing a populate &ldquo;OpenAI&rdquo; entry which lists a lot of OpenAI models&rdquo; title=&ldquo;Screenshot 2025-06-11 at 11.55.45.png&rdquo; border=&ldquo;0&rdquo; width=&ldquo;808&rdquo; height=&ldquo;557&rdquo; /&gt;</p>
+<p>&lt;img style=&ldquo;display:block; margin-left:auto; margin-right:auto;&rdquo; src=&ldquo;<a href="https://zottmann.org/uploads/2025/screenshot-2025-06-11-at-11.55.45.png%22">https://zottmann.org/uploads/2025/screenshot-2025-06-11-at-11.55.45.png&quot;</a> alt=&ldquo;Screenshot of Xcode 26β, Settings window, Intelligence tab, showing a populate &ldquo;OpenAI&rdquo; entry which lists a lot of OpenAI models&rdquo; title=&ldquo;Screenshot 2025-06-11 at 11.55.45.png&rdquo; border=&ldquo;0&rdquo; width=&ldquo;808&rdquo; height=&ldquo;557&rdquo; /&gt;</p>
 <h3 id="my-findings-lest-i-forget">My findings, lest I forget</h3>
 <p>The &ldquo;URL&rdquo; parameter is the API&rsquo;s base URL (must be OpenAI-compatible) up to (but not including) the <code>/v1</code>, e.g. <code>https://api.openai.com/</code> instead of <code>https://api.openai.com/v1</code>.</p>
 <p>The &ldquo;API Key&rdquo; parameter is the API key your provider gave you, e.g. <code>sk-whatever</code>; the &ldquo;API Key Header&rdquo; parameter is <code>x-api-key</code>. But:</p>
 <p>If the provider in question uses the HTTP <code>Authorization</code> header to check the API key, we&rsquo;re in luck: The &ldquo;API Key Header&rdquo; can also be set to <code>Authorization</code> – and in that case, Xcode will <strong>automatically</strong> prefix the API key with the string &ldquo;Bearer&rdquo;, e.g. <code>Bearer sk-whatever</code>.</p>
-<p>&lt;img style=&ldquo;display:block; margin-left:auto; margin-right:auto;&rdquo; src=&ldquo;<a href="https://eu.uploads.micro.blog/24102/2025/screenshot-2025-06-11-at-11.53.53.png%22">https://eu.uploads.micro.blog/24102/2025/screenshot-2025-06-11-at-11.53.53.png&quot;</a> alt=&ldquo;Xcode 26β&rsquo;s &ldquo;internet hosted model provider&rdquo; form, with data as described in the text above.&rdquo; title=&ldquo;Screenshot 2025-06-11 at 11.53.53.png&rdquo; border=&ldquo;0&rdquo; width=&ldquo;843&rdquo; height=&ldquo;576&rdquo; /&gt;</p>
+<p>&lt;img style=&ldquo;display:block; margin-left:auto; margin-right:auto;&rdquo; src=&ldquo;<a href="https://zottmann.org/uploads/2025/screenshot-2025-06-11-at-11.53.53.png%22">https://zottmann.org/uploads/2025/screenshot-2025-06-11-at-11.53.53.png&quot;</a> alt=&ldquo;Xcode 26β&rsquo;s &ldquo;internet hosted model provider&rdquo; form, with data as described in the text above.&rdquo; title=&ldquo;Screenshot 2025-06-11 at 11.53.53.png&rdquo; border=&ldquo;0&rdquo; width=&ldquo;843&rdquo; height=&ldquo;576&rdquo; /&gt;</p>
 <p>So I got OpenAI support working even without Apple Intelligence configured. OpenRouter, not so much: my guess is that OpenRouter&rsquo;s list of available models is just too damn big for Xcode at this point. TBF, it&rsquo;s a humongous list.</p>
 <p>Thanks again to Simon for the pointer!</p>
 <p><strong>Update 2025-08-04:</strong> Got a message from reader Tanveer M. about OpenRouter: there&rsquo;s <a href="https://openrouter.ai/docs/community/xcode">Xcode Integration | OpenRouter | Documentation</a> now. Nice.</p>
@@ -3625,7 +3645,7 @@ linearis comments create ABC-123 --body <span style="color:#e6db74">&#34;Fixed i
 <p>Thanks to <a href="https://caniuse.com/css-has">the new <code>:has()</code> selector</a> (Chrome 105 and up) <strong>it&rsquo;s now trivially easy to filter Youtube lists/grids for videos based on their title.</strong></p>
 <p>Take this new-found possibility and combine it with the power of <a href="https://ublockorigin.com/">uBlock Origin</a> and you&rsquo;ll never have to see a reaction video again.</p>
 <p>This screenshot shows filters for &ldquo;reacts&rdquo; &amp; &ldquo;reactions&rdquo;:</p>
-<p><img src="https://eu.uploads.micro.blog/24102/2022/417f78feb8.png" alt="Screenshot shows uBlock Origin&rsquo;s &ldquo;My filters&rdquo; page with added filters for &ldquo;reacts&rdquo; & &ldquo;reactions&rdquo;"></p>
+<p><img src="https://zottmann.org/uploads/2022/417f78feb8.png" alt="Screenshot shows uBlock Origin&rsquo;s &ldquo;My filters&rdquo; page with added filters for &ldquo;reacts&rdquo; & &ldquo;reactions&rdquo;"></p>
 <p>Here&rsquo;s the example filters for copying into your uBO config:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># YT grid view
 www.youtube.com##ytd-rich-item-renderer:has(yt-formatted-string[aria-label*=&#34; REACTION &#34; i])
@@ -3750,7 +3770,7 @@ www.youtube.com##ytd-compact-video-renderer:has(span[aria-label*=&#34; REACTS &#
 <p>Wie erwähnt: &ldquo;nur ein grober bis gar keinen Plan&rdquo;.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p><img src="https://eu.uploads.micro.blog/24102/2022/36bd3844d8.gif" alt="GIF, Steve Carrell in &ldquo;The Office&rdquo;, er sagt &ldquo;okay&rdquo; und hat Tränen in den Augen">&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><img src="https://zottmann.org/uploads/2022/36bd3844d8.gif" alt="GIF, Steve Carrell in &ldquo;The Office&rdquo;, er sagt &ldquo;okay&rdquo; und hat Tränen in den Augen">&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -3856,7 +3876,7 @@ www.youtube.com##ytd-compact-video-renderer:has(span[aria-label*=&#34; REACTS &#
 
 		<div class="e-content">
 			 <p>(This is just a quick write-up since the question/ topic came up on the Deno Fresh discussion board (<a href="https://github.com/denoland/fresh/discussions/230">&ldquo;State sharing between islands&rdquo;</a>) to which I wrote a short reply. I felt like elaborating here. The examples are stripped to bare minimum, so there&rsquo;ll be no TS definitions and no import maps.)</p>
-<p><img src="https://eu.uploads.micro.blog/24102/2022/ec82456afa.jpg" alt="Screenshot of the first piece of code from the text"></p>
+<p><img src="https://zottmann.org/uploads/2022/ec82456afa.jpg" alt="Screenshot of the first piece of code from the text"></p>
 <p>Let&rsquo;s say you&rsquo;ve built a new site using the wonderful <a href="https://fresh.deno.dev/">Deno Fresh</a> web framework.  You have a number of unconnected islands all over the place and now want them to interact with eachother without resorting to hacks like passing data around using some key on the <code>window</code> object.  <strong>In my personal experience</strong> the best way to do that is by using some sort of state management — using a <em>reactive</em> store of arbitrary data.</p>
 <p>There are a number of options here (Zustand, Redux, mobx etc. come to mind) but my preferred go-to is <a href="https://github.com/hmans/statery">Statery</a> by my guy <a href="https://twitter.com/hmans">@hmans</a>.</p>
 <p>Statery bills itself as &ldquo;Surprise-Free State Management&rdquo; and it&rsquo;s 100% true. It does offer a store, the bare minimum of necessities to make that store and its state reactive, and then sends you on your merry way.  Personally, I prefer that approach over the usual <em>&ldquo;does everything (and your mom)&quot;</em> — do one thing, and do it right.  Statery nails that part.</p>
@@ -3948,7 +3968,7 @@ www.youtube.com##ytd-compact-video-renderer:has(span[aria-label*=&#34; REACTS &#
 <p>Software-Entwickler fahren i.d.R. sehr auf neue, interessante, shiny Dinge ab.  Wir lieben dieses High, wenn wir eine neue Sprache/ Bibliothek/ Methodik entdecken, verstehen und erfolgreich einsetzen können.  Nur folgt auf dieses High dann oft der Alltag … ohne Highs.  Also suchen wir nach dem nächsten heissen Ding.  Gerade in der JS-Ecke ist dieses Problem recht verbreitet, was teilweise absurde Auswirkungen auf die Arbeitsmittel (das Tooling) nach sich zieht.  Auf der anderen Seite gibt es ein paar wirklich fantastische Entwicklungen im Web und im JS-Ökosystem, die aus dieser grundsätzlichen Neugier und Begeisterungsfähigkeit geboren wurden.  Nun ja: &ldquo;🍅, 🍅&rdquo;.</p>
 <p>Ergo: wenn man eine Weile nicht in diesem Bereich gearbeitet hat (sagen wir: 6-7 Jahre), ist der Wiedereinstieg möglicherweise etwas … überwältigend.  Aber ich wurschtele mich durch, und verfolge weiter die Idee der Anleitung zum Stromsparen, <a href="https://zottmann.org/2022/07/10/fresh-in-flensburg.html">die ich vor einigen Wochen hatte</a>.</p>
 <p><strong>Ich habe dafür eine kleine Site gebaut: <a href="https://stromsparen.foerde.win/">Stromkosten Sparen</a>.</strong><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Dort kann man den aktuellen, eigenen kWh-Preis angeben, und die Geräte im Haushalt auflisten.  Die Site errechnet die jährlichen Kosten.  Das funktioniert schon sehr gut, <a href="https://stromsparen.foerde.win/">check it out</a>!</p>
-<p><a href="https://stromsparen.foerde.win/"><img src="https://eu.uploads.micro.blog/24102/2022/a59f72464f.png" alt="Screenshot &ldquo;Stromkosten Sparen&rdquo;"></a></p>
+<p><a href="https://stromsparen.foerde.win/"><img src="https://zottmann.org/uploads/2022/a59f72464f.png" alt="Screenshot &ldquo;Stromkosten Sparen&rdquo;"></a></p>
 <p>Dazu werden in den nächsten Tagen noch weitere Sektionen kommen, u.A. Auswertungen und Tipps:</p>
 <ul>
 <li>Was bedeutet die aktuelle Energie-Preis-Entwicklung für mich und meine Geräte über die nächsten Jahre?</li>
@@ -3984,7 +4004,7 @@ www.youtube.com##ytd-compact-video-renderer:has(span[aria-label*=&#34; REACTS &#
 
 		<div class="e-content">
 			 <p>I&rsquo;m slowly getting into <a href="https://preactjs.com">Preact</a>, <a href="https://deno.land/">Deno</a> + <a href="https://fresh.deno.dev/">Deno Fresh</a> and <a href="https://www.typescriptlang.org/">Typescript</a>.  So far, Deno Fresh has been enjoyable.  Naturally, just like Deno it allows for <code>import</code>ing ES modules via HTTPS.  At some point today I wanted to use an NPM package, one which uses React internally, and I had to figure out how to tell that dependency to not use React but Preact instead.</p>
-<p><img src="https://eu.uploads.micro.blog/24102/2022/dc026c7c24.jpg" alt="Screenshot of the third code block from the post"></p>
+<p><img src="https://zottmann.org/uploads/2022/dc026c7c24.jpg" alt="Screenshot of the third code block from the post"></p>
 <p><strong>So, to recap:</strong> load an React-related ES module from a CDN but have it use Preact as dependency instead.</p>
 <p>Preact comes with its own compatibility layer, <a href="https://preactjs.com/guide/v10/switching-to-preact/"><code>preact/compat</code></a>:</p>
 <blockquote>
@@ -8911,7 +8931,7 @@ Seit 30 Jahren erforscht John Martinis Konzepte für Quantencomputer. Jetzt baut
 <p>So I went shopping around and in the end settled on a really nice, very affordable Hirsch<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> &ldquo;Forest&rdquo; leather band.  I paid ~€27 for the medium-sized variant in light/golden brown.  I spend about half and hour in the store, checking out different armbands, and while I don&rsquo;t like all of them (different looks, different tastes) they&rsquo;re all really nice quality!</p>
 <p>It doesn&rsquo;t have the quick release spring bars, tho — which works for me because I don&rsquo;t plan on going swimming anytime soon, and there have been no issues during/after my usual Fitstar training sessions.</p>
 <p>I&rsquo;m pretty happy with the end result.</p>
-<p><img src="https://eu.uploads.micro.blog/24102/2020/b475d278db.jpg" alt="Withings Activité Pop w/ custom Hirsch &ldquo;Forest&rdquo; light brown leather armband"></p>
+<p><img src="https://zottmann.org/uploads/2020/b475d278db.jpg" alt="Withings Activité Pop w/ custom Hirsch &ldquo;Forest&rdquo; light brown leather armband"></p>
 <p><a href="https://goo.gl/photos/iqtuMe15rq1wTtZ18">Full album</a> over @ Google Photos.</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
@@ -10087,13 +10107,13 @@ der Menschen investieren kann.</p>
 <p>The note is stored locally first, and then synchronized to the remote Evernote server.</p>
 <h2 id="what-to-expect-from-it">What to expect from it</h2>
 <p>This is what a bookmark made with the Evernote Web Clipper looks like in Evernote (<a href="https://attic.czm.io/blog-assets/2015-05-screenshot-bookmark-web-clipper.jpg">bigger version</a>).  The image is the first image the Clipper found on the page (I&rsquo;m just guessing here):</p>
-<p><img src="https://eu.uploads.micro.blog/24102/2020/7b1b1aa335.jpg" alt="Screenshot of a bookmark made using the Evernote Web Clipper" title="Screenshot of a bookmark made using the Evernote Web Clipper"></p>
+<p><img src="https://zottmann.org/uploads/2020/7b1b1aa335.jpg" alt="Screenshot of a bookmark made using the Evernote Web Clipper" title="Screenshot of a bookmark made using the Evernote Web Clipper"></p>
 <p>This is what a bookmark made with the macro looks like in Evernote (<a href="https://attic.czm.io/blog-assets/2015-05-screenshot-bookmark-km-macro.jpg">bigger version</a>).  The looks can be customized by reworking the HTML string in the AppleScript block:</p>
-<p><img src="https://eu.uploads.micro.blog/24102/2020/8399f103ef.jpg" alt="Screenshot of a bookmark made using the KM macro" title="Screenshot of a bookmark made using the KM macro"></p>
+<p><img src="https://zottmann.org/uploads/2020/8399f103ef.jpg" alt="Screenshot of a bookmark made using the KM macro" title="Screenshot of a bookmark made using the KM macro"></p>
 <h2 id="the-macro">The macro</h2>
 <p>Download the macro: <a href="https://attic.czm.io/blog-assets/2015-05-km-bookmark-to-evernote.kmmacros">km-bookmark-to-evernote.kmmacros</a>.</p>
 <p>Screenshot (<a href="https://attic.czm.io/blog-assets/2015-05-screenshot-km-bookmark-to-evernote.png">bigger version</a>):</p>
-<p><img src="https://eu.uploads.micro.blog/24102/2020/6bdbdc3543.jpg" alt="Screenshot of the macro" title="Screenshot of the macro"></p>
+<p><img src="https://zottmann.org/uploads/2020/6bdbdc3543.jpg" alt="Screenshot of the macro" title="Screenshot of the macro"></p>
 
 		</div>
 	  </div>
@@ -12881,7 +12901,7 @@ Einsparmöglichkeiten.</p>
 			 <p><strong>Building a fire-and-forget ad blocker using OpenDNS.</strong></p>
 <p>I am an avid Xbox Live user.  More to the point, I&rsquo;m an avid Xbox Live Gold account owner for a number of years by now.</p>
 <p>So, I&rsquo;ve paid for the console, I&rsquo;m paying for all my games, and I pay an ongoing monthly fee for the connectivity, experience, whatever you want to call it.  Still, Microsoft —proprietor of this fine service— thinks it&rsquo;s entirely sensible to put ads in the frontend, or show Kinect ads before videos.</p>
-<p><img src="https://eu.uploads.micro.blog/24102/2020/319de036cc.jpg" alt="Screenshot dashboard ads"></p>
+<p><img src="https://zottmann.org/uploads/2020/319de036cc.jpg" alt="Screenshot dashboard ads"></p>
 <p>I disagree.</p>
 <p><!-- raw HTML omitted -->So I&rsquo;m using <a href="http://opendns.com">OpenDNS</a> to block their ad servers on my Xbox for good.<!-- raw HTML omitted -->  Here&rsquo;s how.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>First up: I&rsquo;m using a router, and both my Xbox and my main computer are getting their internets from it.  Since both of them go through the same router, they share the same external IP address.  If your setup is the same, this is what to do.</p>
@@ -12906,7 +12926,7 @@ Einsparmöglichkeiten.</p>
 <ol>
 <li>On your Xbox, go to the Settings page/panel → System → Configure Network.</li>
 <li>Select your active network connection and go to the DNS settings.<br>
-<img src="https://eu.uploads.micro.blog/24102/2020/950befc6b5.jpg" alt="Screenshot Network Configuration"></li>
+<img src="https://zottmann.org/uploads/2020/950befc6b5.jpg" alt="Screenshot Network Configuration"></li>
 <li>Set the DNS setting to &ldquo;manual&rdquo;, then the primary DNS server to <code>208.67.222.222</code> and the secondary DNS server to <code>208.67.220.220</code>.</li>
 <li>On saving these settings, your Live account will be logged out.  Just log in again.</li>
 </ol>
@@ -12935,7 +12955,7 @@ Einsparmöglichkeiten.</p>
 		<div class="e-content">
 			 <p><strong>It&rsquo;s the godsdamn console wars all over again, I swear.</strong></p>
 <p>So today Apple might/will/should announce the iPhone 5.  Which, of course, means there&rsquo;ll be a <em>hilarious avalanche</em> of delightful &ldquo;art&rdquo; by curiously insecure<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> Android users, just like <a href="https://plus.google.com/110255737428907780217/posts">this one</a>:</p>
-<p><img src="https://eu.uploads.micro.blog/24102/2020/45daec05f1.jpg" alt="Sheep running towards a badly photoshopped Apple Store" title="Sheep running towards a badly photoshopped Apple Store"></p>
+<p><img src="https://zottmann.org/uploads/2020/45daec05f1.jpg" alt="Sheep running towards a badly photoshopped Apple Store" title="Sheep running towards a badly photoshopped Apple Store"></p>
 <p>Haha, it&rsquo;s funny because it&rsquo;s <em>utter bullshit</em>.</p>
 <p>I guess Apple users are from Mars, Android users are from Venus!!!1  Or something.  Bloody hell, I&rsquo;m already sick and tired of the predictable Apple user bashing.</p>
 <p>It&rsquo;s not just that many conscious Android users I&rsquo;ve met don&rsquo;t understand what I like about iOS, it&rsquo;s that they <em>don&rsquo;t want</em> to hear why.  Not all of them, mind.  Just …many.  You prefer Android?  Great, your choice, have fun.  Me, I like iOS better.  That doesn&rsquo;t make me retarded or a sheep or a mindless drone.</p>
@@ -15499,6 +15519,66 @@ to <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, and full
 <ol>
 <li id="fn:1" role="doc-endnote">
 <p>I really like that app.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://zottmann.org/2008/08/05/going-paleolithic.html">Going Paleolithic</a></h1>
+		
+
+		<a href="https://zottmann.org/2008/08/05/going-paleolithic.html" class="u-url"><time class="dt-published" datetime="2008-08-05 02:00:00 &#43;0200">Aug 5, 2008</time></a>
+
+		<div class="e-content">
+			 <p>In his thoroughly enjoyable <a href="http://www.goodreads.com/review/list/1233416?shelf=series--science-in-the-capitol"><em>Science In The Capitol</em> trilogy</a>, <a href="http://www.goodreads.com/author/show/1858.Kim_Stanley_Robinson">Kim Stanley Robinson</a> (who happens to be my favourite author) talks about a concept called &ldquo;The Paleolithic Life&rdquo;; something he also spoke about in a <a href="http://www.youtube.com/watch?v=R-jz86gMiHw">Google Tech Talk on Climate Change</a> (at ~50min in).</p>
+<p><a href="http://flickr.com/photos/51035555243@N01/287666827" title="A Brand New Day"><img src="https://zottmann.org/uploads/2020/8a09065919.jpg" alt=""></a></p>
+<p>The idea is that there are certain activities engraved in the mind of every human, which result in joy and happiness. These are the things the <a href="http://en.wikipedia.org/wiki/Paleolithic">paleolithic</a> man did during his waking hours, things nature rewarded him for by making him feel alive and capable and <em>good</em>, thus helping him evolve and aiding his development.</p>
+<p>Mr. Robinson compiled a list of these activities:</p>
+<ul>
+<li>Spending the day outdoors</li>
+<li>Walking and running</li>
+<li>Looking for things</li>
+<li>Making things</li>
+<li>Throwing rocks</li>
+<li>Cooking and eating</li>
+<li>Talking and listening</li>
+<li>Singing and music</li>
+<li>Dancing and sex</li>
+<li>Finding a mate</li>
+<li>Raising kids</li>
+<li>Looking at fire</li>
+<li>Seeing by moonlight</li>
+<li>Killing animals</li>
+<li>Being killed by animals</li>
+<li>Making beds at night</li>
+<li>Exploring new land</li>
+<li>Feeling emotions, including terror, religion, right and wrong, etc.</li>
+</ul>
+<p>Especially when you spend your waking hours in an office job, most of these activities are not part of your life anymore. We do not need to hunt for food anymore, we&rsquo;re seldom being killed by animals<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, we don&rsquo;t throw rocks. But the engraved patterns, the subconcious memories of our ancestors life in the paleolithic, the biochemical reward mechanisms are still within us &ndash; just unused.</p>
+<p>What a waste.</p>
+<p>Having doubts about this? Here are some quick tests: If you have the chance, find a fireplace in the night and stare at the flames for a while. Or get out at night, take a walk by moonlight. Or meet with friends for self-made dinner. Or have good sex. (Or all of the above, at once.)</p>
+<p>KSR&rsquo;s proposal is picking up our old habits again, raking in the old rewards, in order to lead a happier life. In a slightly modernised form, of course. Throwing rocks is <em>awesome</em> &ndash; until someone is crying, that is. Which should be avoided. So, how about Frisbee or Baseball? You throw things at things, with less chance of killing people by accident! And think about walking, running, building things <em>with your own hands</em>…</p>
+<p><a href="http://flickr.com/photos/96332550@N00/478332550" title="Sunrise Paddling on the North Canadian River"><img src="https://farm1.static.flickr.com/199/478332550_9d533b6c19_m.jpg" alt=""></a></p>
+<p>Intriguing, no?</p>
+<p>(His theory doesn&rsquo;t seem to be entirely fresh or new, tho; I think it has influenced some of the storylines in his wonderful <a href="http://www.goodreads.com/review/list/1233416?shelf=series-mars"><em>Mars</em> books</a>, even though it was not specifically mentioned (it was in the aforementioned <a href="http://www.goodreads.com/review/list/1233416?shelf=series-science-in-the-capitol"><em>Science In The Capitol</em> books</a>). Some of the characters find some inner peace when doing more or less mundane tasks; Nirgal just wanted to run<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, Nadia was happiest when she could build and make, John was at the top of his world when he could talk with and listen to people, etc.)</p>
+<p><strong>So, long story short, I&rsquo;m trying to get a bit more paleolithic in my life.</strong></p>
+<p>As mentioned, I have <a href="http://carlo.zottmann.org/tag/running.html">started running in April</a>, and it&rsquo;s actually pretty cool. I feel <em>really</em> good after most of my runs (not during them, mind you) &ndash; my new-found ability to run 5km straight is nothing short of a miracle to me, really.</p>
+<p>Since I don&rsquo;t feel like hitting and paying for other peoples' stuff, but want to throw things at things, I bought some Frisbees and already took them out for some hilarious practice games with Dana, we had a blast, and I will try to make it a regular activity. I actually want to give casual <a href="http://en.wikipedia.org/wiki/Disc_Golf">Disc Golf</a> a try; we&rsquo;ll see.</p>
+<p>Already I try to spend (a little bit) more time outdoors, mostly by walking instead of taking the bus, watching my surroundings, i.e. walking with open eyes. Good for the health, and sometimes you&rsquo;ll see interesting things, really. And next week I&rsquo;ll go kayaking. Gonna be interesting.</p>
+<p>And I will try not to be eaten by wild animals.</p>
+<p>Opinions?</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>The feeling of successfully outrunning/outsmarting a predator was where the reward and joy lay, KSR mentioned in his Google Tech Talk.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Quite honestly, the figure of Nirgal, especially his recurring wish to &ldquo;just run&rdquo; deeply resonated with me. I&rsquo;d even say he was one of the big influences that <em>made me</em> pick up running. Don&rsquo;t laugh, please. Interestingly enough, <em>Science In The Capitol</em>&rsquo;s Frank Vanderwal&rsquo;s excursions into &ldquo;running frisbee golf&rdquo; read so good, it made me order two discs. :P&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
