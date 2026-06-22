@@ -24,6 +24,106 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://zottmann.org/2026/06/22/ive-changed-the-pricing-for.html">I&#39;ve changed the pricing for Actions For Obsidian</a></h1>
+		
+
+		<a href="https://zottmann.org/2026/06/22/ive-changed-the-pricing-for.html" class="u-url"><time class="dt-published" datetime="2026-06-22 17:20:02 &#43;0200">Jun 22, 2026</time></a>
+
+		<div class="e-content">
+			 <p>TL;DR: <strong>Most in-app purchases got more affordable, biggest price drops outside the Euro zone.</strong></p>
+<p>It was brought to my attention that, internationally, the pricing for my macOS/iOS app <a href="https://actions.work/actions-for-obsidian">Actions For Obsidian</a> was a bit odd. Apple isn&rsquo;t without blame here, but ultimately that&rsquo;s fully on me. I simply didn&rsquo;t check all the local prices after setting the base Euro price tags, and I apologize.</p>
+<h3 id="why-it-matters">Why it matters</h3>
+<p>The below changes do not look like much if you&rsquo;re the Euro zone but <strong>for calculated local prices the difference can be staggering</strong>. Read below for more.</p>
+<h3 id="the-new-pricing">The new pricing</h3>
+<p>… went into effect over the weekend:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">License</th>
+<th style="text-align:center">&ldquo;Size&rdquo;</th>
+<th style="text-align:right">Old price</th>
+<th style="text-align:right">New price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">macOS <strong>or</strong> iOS</td>
+<td style="text-align:center">S</td>
+<td style="text-align:right">€11</td>
+<td style="text-align:right">€9.99</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">M</td>
+<td style="text-align:right">€14</td>
+<td style="text-align:right">€12.99</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">L</td>
+<td style="text-align:right">€17</td>
+<td style="text-align:right">€17.99</td>
+</tr>
+<tr>
+<td style="text-align:left">Upgrade to both platforms</td>
+<td style="text-align:center">S</td>
+<td style="text-align:right">€8</td>
+<td style="text-align:right">€7.99</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">M</td>
+<td style="text-align:right">€10</td>
+<td style="text-align:right">€9.99</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">L</td>
+<td style="text-align:right">€12</td>
+<td style="text-align:right">€12.99</td>
+</tr>
+<tr>
+<td style="text-align:left">Combo license for both</td>
+<td style="text-align:center">S</td>
+<td style="text-align:right">€19</td>
+<td style="text-align:right">€17.99</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">M</td>
+<td style="text-align:right">€24</td>
+<td style="text-align:right">€20.99</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">L</td>
+<td style="text-align:right">€29</td>
+<td style="text-align:right">€25.99</td>
+</tr>
+</tbody>
+</table>
+<p>You can access them from inside the app.</p>
+<h3 id="where-i-went-wrong">Where I went wrong</h3>
+<p>I looked a bit deeper into how Apple calculates local prices, and …it&rsquo;s surprisingly lazy? Totally bonkers? Both, actually. I had no idea!</p>
+<p>So, when a developer sets the price for an app or <!-- raw HTML omitted -->IAPs<!-- raw HTML omitted --> in the App Store, they can either pick from a pre-defined list of prices, or they can enter an arbitrary price. Since I like nice round numbers, I set the price to €19 instead of €18.99 (using one of the IAPs as example).</p>
+<p>Here, Apple&rsquo;s price calculation kicked in. I then spot-checked a few of those prices, they all looked fine, and I considered that task completed.</p>
+<p>So, in the process, for those €19, Apple&rsquo;s &ldquo;calculation&rdquo; set the local Australian price to AUD 29.00.</p>
+<p>Only last week I learned that when I decrease that nice round €19 to €18.99, the Aussie price becomes AUD 29.99. (What.) Changing it to €18.00, it becomes AUD 29.00 again. Going down to €17.99, the local price drops to AUD 22.99. 🤯</p>
+<p>Absolutely wild.</p>
+<h3 id="but-why-carlo">But why, Carlo‽</h3>
+<p>My current theory is that Apple really, <strong>really</strong> wants us developers to use their *.99 pricing scheme matrix (…, €7.99, €8.99, €9.99, €12.99, €14.99, €17.99, €19.99, €24.99, etc.). For those prices, there are properly calculated local counterparts.</p>
+<p>But for those custom prices, Apple doesn&rsquo;t actually calculate anything, it seems; they just use the nearest &ldquo;standard&rdquo; price. That&rsquo;s why €17.99 comes out as AUD 22.99 correctly (because €17.99 exists in Apple&rsquo;s matrix), but €18 is AUD 29.00 because their pricing matrix doesn&rsquo;t contain that.</p>
+<p>And it&rsquo;s not just about Australia — my apps are available in 150+ countries which don&rsquo;t use the EUR. 🤦🏻‍♂️</p>
+<h3 id="summary">Summary</h3>
+<p>To my (potential) customers, I&rsquo;m sorry for the oversight. If you were still on the fence whether or not to spend money on Actions For Obsidian, I do hope you take another friendly look.</p>
+<p>To my fellow developers, spot-check your local prices often. 😅</p>
+<p>PS: <a href="https://actions.work/">My other useful, nice, non-AppStore apps are unaffected by Apple&rsquo;s pricing, and still very affordable.</a>  Wink wink, nudge nudge. 🤙🏼</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://zottmann.org/2026/05/20/the-european-llm-routers-are.html">The European LLM Routers Are Here</a></h1>
 		
 
@@ -1895,7 +1995,7 @@ killall useractivityd
 <p>So I wrote <a href="https://github.com/czottmann/linearis">Linearis</a>, a CLI tool for Linear.app with JSON output, smart ID resolution, and optimized GraphQL queries. I designed it for LLM agents and humans who prefer structured data.</p>
 <p>It&rsquo;s a command-line tool that outputs JSON, resolves ticket IDs smartly, and keeps token usage light.</p>
 <h3 id="installation">Installation</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install -g --install-links czottmann/linearis
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install -g linearis
 </code></pre></div><p>Once installed, <a href="https://github.com/czottmann/linearis#authentication">authenticate yourself</a>, and then you&rsquo;re good to go.</p>
 <h3 id="usage-examples">Usage Examples</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Show usage</span>
